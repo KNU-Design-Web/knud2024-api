@@ -11,6 +11,7 @@
         "commit": "yarn workspace cms-commit run dev"
     },
     "workspaces": [
+        "cms-app",
         "cms-commit",
         "cms-upload"
     ],
