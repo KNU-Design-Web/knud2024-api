@@ -29,6 +29,9 @@ jobs:
                     - name: "knud-admin/cms-upload"
                       path: "cms-upload/src"
                       aws_function_name: "knud-admin-cms-upload"
+                    - name: "knud-admin/cms-magic-link"
+                      path: "cms-magic-link/src"
+                      aws_function_name: "knud-admin-cms-magic-link"
 
         steps:
             - name: Checkout Code
