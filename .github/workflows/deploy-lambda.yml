@@ -6,9 +6,9 @@ on:
             - main
             - develop
         types:
-            - closed
+            - closed # PR이 닫혔을 때 (병합 포함)
 
-    workflow_dispatch:
+    workflow_dispatch: # 수동 실행을 위한 트리거
 
 jobs:
     deploy:
@@ -23,16 +23,11 @@ jobs:
             matrix:
                 lambda:
                     - name: "knud-admin/cms-commit"
-                      path: "cms-commit"
+                      path: "cms-commit/src"
                       aws_function_name: "knud-admin-cms-commit"
-
                     - name: "knud-admin/cms-upload"
-                      path: "cms-upload"
+                      path: "cms-upload/src"
                       aws_function_name: "knud-admin-cms-upload"
-
-                    # - name: "knud-admin/cms-auth"
-                    #   path: "cms-auth"
-                    #   aws_function_name: "knud-admin-cms-auth"
 
         steps:
             - name: Checkout Code
@@ -44,3 +39,14 @@ jobs:
                   aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
                   aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
                   aws-region: ${{ env.AWS_REGION }}
+
+            - name: Build and Package Lambda Function - ${{ matrix.lambda.name }}
+              run: |
+                  cd ${{ github.workspace }}/${{ matrix.lambda.path }}
+                  zip -r ../../${{ matrix.lambda.aws_function_name }}.zip .
+
+            - name: Deploy Lambda Function - ${{ matrix.lambda.name }}
+              run: |
+                  aws lambda update-function-code \
+                    --function-name ${{ matrix.lambda.aws_function_name }} \
+                    --zip-file fileb://${{ github.workspace }}/${{ matrix.lambda.aws_function_name }}.zip
