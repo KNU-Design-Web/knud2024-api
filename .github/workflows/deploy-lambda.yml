@@ -1,0 +1,46 @@
+name: Deploy AWS Lambda Function
+
+on:
+    pull_request:
+        branches:
+            - main
+            - develop
+        types:
+            - closed
+
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        env:
+            AWS_REGION: ${{ secrets.AWS_REGION }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+        strategy:
+            matrix:
+                lambda:
+                    - name: "knud-admin/cms-commit"
+                      path: "cms-commit"
+                      aws_function_name: "knud-admin-cms-commit"
+
+                    - name: "knud-admin/cms-upload"
+                      path: "cms-upload"
+                      aws_function_name: "knud-admin-cms-upload"
+
+                    # - name: "knud-admin/cms-auth"
+                    #   path: "cms-auth"
+                    #   aws_function_name: "knud-admin-cms-auth"
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v3
+              with:
+                  aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: ${{ env.AWS_REGION }}
