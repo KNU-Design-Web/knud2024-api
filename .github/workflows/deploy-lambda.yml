@@ -50,7 +50,7 @@ jobs:
               run: |
                   aws lambda update-function-configuration \
                     --function-name ${{ matrix.lambda.aws_function_name }} \
-                    --environment "Variables=${{ env.AWS_LAMBDA_ENVIRONMENT_VARIABLES }}"
+                    --environment '${{ env.AWS_LAMBDA_ENVIRONMENT_VARIABLES }}'
 
             - name: Deploy Lambda Function - ${{ matrix.lambda.name }}
               run: |
