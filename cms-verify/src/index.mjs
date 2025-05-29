@@ -8,9 +8,8 @@ const JWT_SECRET = process.env.JWT_SECRET;
  * @returns {Promise<import("aws-lambda").APIGatewayProxyResult>}
  */
 export const handler = async (event) => {
-    const token = event.headers.Authorization.split(" ")[1];
-
     try {
+        const token = event.headers.Authorization.split(" ")[1];
         jwt.verify(token, JWT_SECRET);
         return BaseResponse.from(200, { message: "Authorized" });
     } catch (error) {
