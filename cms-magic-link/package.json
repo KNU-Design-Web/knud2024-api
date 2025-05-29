@@ -1,0 +1,14 @@
+{
+    "name": "cms-magic-link",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "node bin/index.mjs",
+        "test": "jest"
+    },
+    "dependencies": {
+        "jsonwebtoken": "^9.0.2"
+    }
+}
