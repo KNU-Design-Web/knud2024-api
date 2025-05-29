@@ -44,18 +44,18 @@ jobs:
                   aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
                   aws-region: ${{ env.AWS_REGION }}
 
-            - name: Build and Package Lambda Function - ${{ matrix.lambda.name }}
+            - name: Build and Package Lambda Function
               run: |
                   cd ${{ github.workspace }}/${{ matrix.lambda.path }}
                   zip -r ../../${{ matrix.lambda.aws_function_name }}.zip .
 
-            - name: Setup Environment Variables - ${{ matrix.lambda.name }}
+            - name: Setup Environment Variables
               run: |
                   aws lambda update-function-configuration \
                     --function-name ${{ matrix.lambda.aws_function_name }} \
                     --environment '${{ env.AWS_LAMBDA_ENVIRONMENT_VARIABLES }}'
 
-            - name: Deploy Lambda Function - ${{ matrix.lambda.name }}
+            - name: Deploy Lambda Function
               run: |
                   aws lambda update-function-code \
                     --function-name ${{ matrix.lambda.aws_function_name }} \
