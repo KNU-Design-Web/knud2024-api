@@ -11,13 +11,15 @@
         "upload": "yarn workspace cms-upload",
         "commit": "yarn workspace cms-commit",
         "magic-link": "yarn workspace cms-magic-link",
+        "verify": "yarn workspace cms-verify",
         "test": "jest"
     },
     "workspaces": [
         "cms-app",
         "cms-magic-link",
         "cms-commit",
-        "cms-upload"
+        "cms-upload",
+        "cms-verify"
     ],
     "dependencies": {
         "@aws-sdk/client-cloudfront": "^3.817.0",

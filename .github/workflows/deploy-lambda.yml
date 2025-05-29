@@ -32,6 +32,9 @@ jobs:
                     - name: "knud-admin/cms-magic-link"
                       path: "cms-magic-link/src"
                       aws_function_name: "knud-admin-cms-magic-link"
+                    - name: "knud-admin/cms-verify"
+                      path: "cms-verify/src"
+                      aws_function_name: "knud-admin-cms-verify"
 
         steps:
             - name: Checkout Code
