@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react";
-import { cn } from "@/common/utils";
+import { cn } from "@/common/lib/style";
 import { Link, useLocation } from "react-router-dom";
 import { dashboardMenuItems } from "@/app/config/dashboard-nav";
 

@@ -1,6 +1,6 @@
 import { Input } from "@/common/ui/input";
 import { Label } from "@/common/ui/label";
-import { cn } from "@/common/utils";
+import { cn } from "@/common/lib/style";
 
 export interface InputFieldSetProps {
     id: string;

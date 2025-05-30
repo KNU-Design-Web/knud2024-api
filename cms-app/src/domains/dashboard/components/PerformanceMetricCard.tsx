@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/common/ui/card";
-import { cn } from "@/common/utils";
+import { cn } from "@/common/lib/style";
 import { getStatusColor, type Status } from "@/domains/dashboard/utils/getStatusColor";
 
 interface PerformanceMetricCardProps {
