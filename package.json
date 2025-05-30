@@ -8,6 +8,7 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "app": "yarn workspace cms-app",
         "upload": "yarn workspace cms-upload",
         "commit": "yarn workspace cms-commit",
         "magic-link": "yarn workspace cms-magic-link",
