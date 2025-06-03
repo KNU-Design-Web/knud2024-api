@@ -40,7 +40,7 @@ export default function SignInPage() {
                         <Button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full h-12 bg-primary hover:bg-primary/90 text-black font-semibold rounded-xl"
+                            className="w-full h-12 bg-light-green hover:bg-light-green/90 text-black font-semibold rounded-xl"
                         >
                             {isLoading ? (
                                 <div className="flex items-center space-x-2">

@@ -20,7 +20,7 @@ export function VisitorStats({
         <Card className="bg-white border-gray-300 shadow-none">
             <CardHeader className="pb-2">
                 <CardTitle className="text-lg font-medium flex items-center">
-                    <Users className="mr-2 h-5 w-5 text-primary" />
+                    <Users className="mr-2 h-5 w-5 bg-light-green" />
                     방문자 통계
                 </CardTitle>
             </CardHeader>
