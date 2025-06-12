@@ -6,7 +6,7 @@ export class GuestbookRepository {
     static GUESTBOOK_TABLE = process.env.GUESTBOOK_TABLE;
 
     constructor() {
-        const client = new DynamoDBClient();
+        const client = new DynamoDBClient({ region: process.env.AWS_REGION });
         this.documentClient = DynamoDBDocumentClient.from(client);
     }
 
