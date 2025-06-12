@@ -1,5 +1,5 @@
 {
-    "name": "cms-magic-link",
+    "name": "api-magic-link",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",

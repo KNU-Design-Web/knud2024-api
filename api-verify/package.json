@@ -1,5 +1,5 @@
 {
-    "name": "cms-verify",
+    "name": "api-verify",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
