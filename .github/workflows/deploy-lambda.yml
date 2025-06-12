@@ -23,18 +23,21 @@ jobs:
         strategy:
             matrix:
                 lambda:
-                    - name: "knud-admin/cms-commit"
-                      path: "cms-commit/src"
-                      aws_function_name: "knud-admin-cms-commit"
-                    - name: "knud-admin/cms-upload"
-                      path: "cms-upload/src"
-                      aws_function_name: "knud-admin-cms-upload"
-                    - name: "knud-admin/cms-magic-link"
-                      path: "cms-magic-link/src"
-                      aws_function_name: "knud-admin-cms-magic-link"
-                    - name: "knud-admin/cms-verify"
-                      path: "cms-verify/src"
-                      aws_function_name: "knud-admin-cms-verify"
+                    - name: "knud-api/commit"
+                      path: "api-commit/src"
+                      aws_function_name: "knud-api-commit"
+                    - name: "knud-api/upload"
+                      path: "api-upload/src"
+                      aws_function_name: "knud-api-upload"
+                    - name: "knud-api/magic-link"
+                      path: "api-magic-link/src"
+                      aws_function_name: "knud-api-magic-link"
+                    - name: "knud-api/verify"
+                      path: "api-verify/src"
+                      aws_function_name: "knud-api-verify"
+                    - name: "knud-api/guestbook"
+                      path: "api-guestbook/src"
+                      aws_function_name: "knud-api-guestbook"
 
         steps:
             - name: Checkout Code
