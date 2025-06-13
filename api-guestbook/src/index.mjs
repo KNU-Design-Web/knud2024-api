@@ -19,6 +19,10 @@ export const handler = async (event) => {
             return guestbookController.createGuestbook();
         case "DELETE":
             return guestbookController.deleteGuestbook();
+        case "OPTIONS":
+            return BaseResponse.from(200, {
+                message: "CORS preflight response",
+            });
         default:
             return BaseResponse.from(405, {
                 message: `Method Not Allowed : ${httpMethod}`,
