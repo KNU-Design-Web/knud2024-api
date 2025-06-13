@@ -3,7 +3,7 @@ import { GuestbookRepository } from "../repository/GuestbookRepository.mjs";
 
 export class GuestbookController {
     /**
-     * @param {import("aws-lambda").APIGatewayEvent} event
+     * @param {import("aws-lambda").APIGatewayProxyEventV2} event
      * @param {GuestbookRepository} guestbookRepository
      */
     constructor(event, guestbookRepository) {

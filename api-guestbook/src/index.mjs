@@ -3,14 +3,16 @@ import { GuestbookController } from "./controllers/GuestbookController.mjs";
 import { GuestbookRepository } from "./repository/GuestbookRepository.mjs";
 
 /**
- * @param {import("aws-lambda").APIGatewayEvent} event
+ * @param {import("aws-lambda").APIGatewayProxyEventV2} event
  * @returns {Promise<import("aws-lambda").APIGatewayProxyResult>}
  */
 export const handler = async (event) => {
+    const httpMethod = event.requestContext.http.method;
+
     const guestbookRepository = new GuestbookRepository();
     const guestbookController = new GuestbookController(event, guestbookRepository);
 
-    switch (event.httpMethod) {
+    switch (httpMethod) {
         case "GET":
             return guestbookController.readGuestbook();
         case "POST":
@@ -19,8 +21,7 @@ export const handler = async (event) => {
             return guestbookController.deleteGuestbook();
         default:
             return BaseResponse.from(405, {
-                message: `Method Not Allowed : ${event.httpMethod}`,
-                allowedMethods: ["GET", "POST", "DELETE"],
+                message: `Method Not Allowed : ${httpMethod}`,
             });
     }
 };
